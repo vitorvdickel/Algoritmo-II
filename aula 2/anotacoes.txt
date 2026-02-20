@@ -1,0 +1,182 @@
+STRING:
+- Uma linha
+- Qualquer caractere que eu tratar como um nome é considerado STRING
+- Caracteres utilizados para armazenar textos em geral
+- Char armazena apenas um caractere, já a STRING armazena uma sequencia de Caracteres
+
+Manipulação de STRING:
+- Matriz de Caracteres
+- STRING é uma matriz tipo char que termina com '\0'. Por isso STRING deve conter uma posição a mais do que o número de caracteres que se deseja
+- Constantes STRINGS são uma lista de caracteres que aparecem entre aspas
+
+*NUNCA UTILIZAR getline PARA LER VETOR DE Char
+(Char = get) / (String = getline)
+
+Método getline:
+- Pode utilizar getline com vetor de char, mas deve-se ler usando a sintaxe cin.getline(vetor_char, tamanho)
+- Isso serve para ele ler apenas um dado tamanho de caracteres
+
+*sizeof (mostra o tamanho em bytes)
+
+Função strcpy()
+- copia o conteúdo de uma String
+- Sintaxe: strcpy(destino,origem);
+Ex: char nome [50], a [50];
+main(){
+    cout << "\n Digite seu nome: ";
+    gets(nome);
+    strcpy(a,nome)
+    cout << "a";
+    getchat();
+}
+
+Função strcat()
+- Concatena duas strings agrupando o resultado no primeiro argumento
+- Não verifica o tamanho
+Sintaxe: strcat(string1, string2);
+Ex: char nome [50], a [50];
+main(){
+    cout << "\n Digite seu nome: ";
+    gets(nome);
+    strcpy(a,"nome: ");
+    strcat(a, nome);
+    cout << a;
+    getchar();
+}
+
+Função strcmp()
+- Compara duas strings, se forem iguais devolve 0
+- Usado em testes condicionais
+Sintaxe: strcmp(s1,s2);
+Ex:char nome[50];
+main()
+{
+      cout<<"Digite seu nome: ";
+      gets(nome);
+
+}
+
+Função strlen()
+- Retorna o tamanho da string
+Sintaxe: strlen(string)
+Ex: cout << “seu nome tem: ” << strlen(nome) << “caracteres”;
+
+*TODAS AS FUNÇÕES ACIMA UTILIZAM O VETOR DE CHAR, NÃO SENDO POSSIVEL UTILIZAR STRING!!!
+
+BIBLIOTECAS STRING
+
+Inicialmente é necessário utilizar a biblioteca que possibilita a manipulação de string
+#include <cstring>
+Sintaxe: string <nome da string>
+
+inicializador de uma string.
+string s1
+cria uma string vazia, chamada de s1. Toda a string criada dessa forma está vazia
+
+string s2(s1);
+cria a string s2 como uma cópia de outra string (nesse caso, s1)
+
+string s2 ("Esta é uma string literal");
+Cria uma string s2 como uma cópia da string literal entre os parenteses
+
+string s2 (x, 'b');
+cria uma string s2, que contém x cópias do caracteres entre aspas (no caso, b)
+
+considerando "s" uma string vazia
+s.empty()
+- função que retorna verdadeiro se a string está vazia, e falso caso contrário
+
+s.size()
+- função que retorna o tamanho em caracteres da string
+
+s[n]
+- acessa um elemento da string, funciona com um elemento de uma matriz
+
+s1+s2
+- concatena duas strings
+
+s1=s2
+- atribui o conteúdo de s2 na string s1
+
+s1 == s2
+- testa a igualdade entre s1 e s2 (retorna verdadeiro se ambas strings forem iguais)
+- serão iguais se tiverem o mesmo número de caracteres e seus caracteres forem iguais, sensível a maiúsculas e minúsculas
+
+A PARTIR DE AGORA PODE SER USADO COM VETOR DE CHAR E STRING
+
+toupper(x)
+- Transforma o caractere para maiúsculo
+string teste("ADILSO Souza");
+for (int x = 0; x<= teste.sixe(); x++){ //regra de scopos, se eu declaro x dentro de for ele será utilziado apenas dentro do laço
+    teste[x] = toupper(teste[x])
+}
+cout << teste;
+Exibe: ADILSO SOUZA
+
+tolower(x)
+- Transforma o caractere para minúsculo
+string teste("ADILSO Souza");
+for (int x = 0; x<= teste.sixe(); x++){ //regra de scopos, se eu declaro x dentro de for ele será utilziado apenas dentro do laço
+    teste[x] = tolower(teste[x])
+}
+cout << teste;
+Exibe: adilso souza
+
+isalnum (x)
+- Retonra verdadeiro (1) caso x for letra ou número
+string teste("ab12#@");
+if(isalnum(teste[4])){
+    cout << "Letra ou número";
+} else {
+    cout << "caracter especial";
+}
+Exibe: Caractere especial
+
+isalpha (x)
+- Retorna verdadeiro (1) caso x for uma letra. 
+ string teste("ab12#@");
+    if(isalpha(teste[0]))
+        cout << "É uma Letra";
+    else
+         cout << "Outro Caracter";
+Exibe: É uma letra.
+
+isdigit (x)
+- Retorna verdadeiro (1) caso x for um número. 
+string teste("ab12#@");
+if(isdigit(teste[3]))
+        cout << "É um número";
+else
+        cout << "Não é um número";
+Exibe: É um número
+
+islower(x)
+- Retorna verdadeiro (1) caso x for uma letra 
+minúscula.
+string teste("abAB");
+if(islower(teste[0]))
+        cout << "É minúscula";
+else
+        cout << "Não é minúscula"; 
+Exibe: É minúscula
+
+isupper(x)
+- Retorna verdadeiro (1) caso x for uma letra 
+maiúscula.
+string teste("abAB");
+if(isupper(teste[3]))
+        cout << "É maiúscula";
+else
+        cout << "Não é maiúscula"; 
+Exibe: É maiúscula
+
+isspace (x)
+- Retorna  verdadeiro  (1)  caso  x  for  um  espaço  em 
+branco. 
+string teste("Adilso Souza");
+if(isspace(teste[6]))
+        cout << "É um espaço em branco";
+else
+        cout << "Não é um espaço em branco";
+Exibe: É um espaço em branco
+
