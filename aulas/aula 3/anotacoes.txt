@@ -1,0 +1,37 @@
+STRUCT = REGISTRO
+Capacidade de juntar 4 ou 5 informações em apenas uma estrutura
+
+variável composta
+
+Criar STRUCT:
+struct nome_do_registro{
+    tipo nome_do_campo
+};
+
+Exemplo: 
+struct aluno{
+    int n_matricula;
+    float nota[3];
+    float media;
+};
+
+struct cadastro{
+    char nome[50];
+    char endereco[100];
+    int idade;
+    float salario;
+};
+
+A partir da estrutura definida, o programa poderá considerar que existe
+um novo tipo de dado, que poderá ser utilizado
+cadastro x; //a variável x e do tipo cadastro
+
+numero x[10] //para captar mais de uma info num vetor
+x[1].res (exemplo slide que tem float res;)
+
+A informação contida em uma variável do tipo da estrutra pode ser 
+atribuída a outra variável do mesmo tipo
+
+Permite-se a definição de estruturas alinhadas, isto significa que é possível que algum
+membro de uma estrutura seja definido como sendo outra estrutura previamente declarada
+e no mesmo escaço
