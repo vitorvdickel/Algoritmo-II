@@ -1,0 +1,110 @@
+ARQUIVO TEXTO
+#include <fstream>
+
+ofstream: cria um objeto para escrita do arquivo (saída)
+ifstream: cria um objeto para leitura (entrada)
+fstream: cria um objeto para leitura e escritura (entrada e saída) * não vamos utiliza-lo
+
+Associando o objeto criado a um arquivo
+<objeto>.open("nome do arquivo", tipo de abertura)
+    ofstream escreve;
+    escreve.open("teste.txt, ios::out);
+pode ser escrito na mesma linha:
+    ofstream escreve ("teste.txt" , ios::out);
+
+formato para escrita: 
+out - apaga o conteúdo do arquivo e começa do inicio
+app - mantém o conteúdo existente e posiciona o cursor no último conteúdo escrito
+
+formato para leitura:
+in - abre o aquivo para leitura
+
+formato para apagar conteúdo:
+trunc - apaga o conteúdo do arquivo
+
+após aberto o arquivo deve ser fechado, utilizando:
+    escreve.close();
+
+VERIFICAÇÕES:
+
+is_open: esta função checa se o arquivo foi aberto e retorna true (1)
+se o estiver tudo certo com o programa, ou false (0) caso o arquivo
+nao pode ser aberto
+Sintaxe:
+    if(escreve.is_open())
+        cout << “Arquivo aberto com sucesso”;
+    else
+        cout << “Erro ao abrir o arquivo”;
+
+.good(): Esta função verifica se consegue se comunicar com o arquivo
+Sintaxe:
+    if(escreve.good())
+        cout << “Arquivo aberto com sucesso”;
+    else
+        cout << “Erro ao abrir o arquivo”;
+
+.fail(): verifica possivel falha no arquivo, se houver retorna true (1)
+    if(escreve.fail() == 0)
+        cout << “Arquivo aberto com sucesso”;
+    else
+        cout << “Erro ao abrir o arquivo”;
+
+ESCRITA DO ARQUIVO:
+
+escreve << "Conteúdo que será escrito";
+escreve << variável
+
+É possivel utilizar um laço de repetição para ler todos os caracteres
+do arquivo char c;
+Sintaxe:
+while (leitura.get(c)){
+    cout << c;
+}
+
+Também é possivel ler a linha inteira, para isso utilizar o getline
+le o tamano máximo especificado seja atingindo ou encontrar uma quebra
+de linha ou o fim do arquivo
+char conteudo[80];
+leitura.getline(conteudo, 80);
+
+Para lermos uma palavra inteira de um arquivo da mesma maneira que o
+comando cin, o objeto lerá todos os caracteres em seu caminho, ATÉ que
+a matriz atinja seu tamanho máximo especificado ou encontre um espaço
+em branco, uma tabulação, uma quebra de linha ou fim do arquivo
+char conteudo[80];
+leitura >> conteudo;
+
+ENCONTRAR O FIM DO ARQUIVO
+End of File (EOF), identifica se o arquivo já chegou ao final ou não
+while (!leitura.eof()){
+    leitura >> conteudo;
+    cout << conteudo << endl;
+}
+
+MÉTODO CONSTRUTOR
+Exemplo: ofstream escreve("teste3.txt);
+mesmo que executar:
+ofstream escreve;
+escreve.open("teste3.txt", ios::out);
+
+da mesma maneira a leitura
+ifstream leitura("teste3.txt);
+mesmo que executar
+leitura.open("teste3.txt", ios::in);
+
+*verificar exemplo 12 do professor
+
+Imagine um arquivo com números separados por espaço e distribuidos
+em n linha e n colunas
+Sintaxe:
+ifstream ler("exemplo_34.txt");
+if(ler.is_open()){
+    for (int l = 0; l < 5; l++){
+        for (int c = 0; c < 5; c++){
+            ler >> m[l][c];
+        }
+    }
+    ler.close();
+}
+
+*verificar exemplo 13 do professor
