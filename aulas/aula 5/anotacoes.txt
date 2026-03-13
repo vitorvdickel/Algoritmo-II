@@ -1,0 +1,122 @@
+FUNÇÕES
+criar repositório com rotinas pré estabelecidas
+reuso
+
+para criar uma função temos que definir se ela haverá retorno
+void: função que não retorna nada (exibe uma mensagem na tela por exemplo)
+senao usamos int, floar, etc...
+
+argumentos da função: elementos que a função precisa para funcionar
+função: serve para realizar uma ação
+então que seja passados os dados de entradas (argumento/parâmentro)
+nada mais é do que informação
+
+informação de valor: passa o conteúdo;
+informação de referencia: passa o endereço de memória;
+
+definição da função ocorre na parte das variáveis globais
+duas formas de declarar função:
+
+não pode ter o mesmo nome de variáveis e constantes
+
+chamar uma função basta colocar o nome da função seguido de abre e fecha parenteses
+
+ex:
+calculo();
+
+passagem de parametro por valor é quando fazemos uma cópia do valor
+
+por referência:
+- As variáveis ocupam a mesma posição na memória
+EX: int calcula(int &a, int &b){
+    int res;
+    a+=8;
+    res = a + b;
+    return res;
+}
+main(){
+    int x,y;
+    x = 4;
+    y = 2;
+    cout << "Resultado: " << calcula(x,y);
+    getchar();
+}
+
+argumento default
+possibilidade de definir um valor padrão para um argumetno em uma função
+
+vetor com função
+para manipular um vetor utilizando função identicando como um vetor
+através do uso dos colchetes, não necessita informar a dimensão, pois 
+ao adicionar a função estaremos referenciando ao endereço de memória do vetor
+original.
+EX:
+void leitura(int x[])
+
+para acionar a função devemos informar o endereço de memoria onde
+inicia o vetor
+EX:
+int a[10];
+leitura (a);
+leitura (&a[0]);
+
+main(){
+    int a [50];
+    leitura(a);
+}
+void leitura(int x[]){
+    int i;
+    strand(time(NULL));
+    for (i=0; i<50; i++){
+        x[i] = rand()%50
+    }
+}
+
+Matriz com função
+Para manipular um array de duas dimenções (matriz) através de uma função
+deve-se declarar o parâmetro da função informando o número de colunas
+que a matriz vai conter
+EX:
+void leitura(int mat[][5]);
+a chamada deve ser passando somente o nome da variável original
+leitura(a);
+
+main(){
+    int a[5][5];
+    leitura (a);
+}
+void leitura(int mat[][5]){
+    int i, x;
+    srand(time(NULL));
+    for (i = 0; i < 5; i++){
+        for (x = 0; x < 5; x++){
+            mat[i][x] = rand()%100
+        }
+    }
+}
+STRUCT com função
+o parametro da função deve ser do mesmo tipo
+void ler(cad &a){
+    cout << "Informe o nome: ";
+    gets(a.nome);
+    fflush (stdin);
+
+    cout << "Informe a idade: ";
+    cin >> a.idade;
+    fflush(stdin);
+    cout << "Informe o salario: ";
+    cin >> a.sal;
+    fflush(stdin);
+    }
+  
+    struct cad
+    {
+    char nome[50];
+    int idade;
+    float sal;
+    };
+    main()
+    {
+    cad teste;
+    ler(teste);
+    }
