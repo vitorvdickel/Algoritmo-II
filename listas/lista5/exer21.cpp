@@ -1,12 +1,9 @@
-/*22 - Escrever um programa, que através de funções realize as seguintes ações:
-- Função para gerar um vetor V[20] com valores no intervalo de 0 a 100 sem números repetidos.
-- Função para mostrar os valores gerados na tela separados por uma vírgula.
-- Função que escreva os valores do vetor em um arquivo texto chamado “exer_22.txt”, separando
-cada elemento por um espaço em branco.
-- Função para ler posições do vetor (validar para aceitar 0 a 19).
-Após o programa deverá ler duas posições do vetor e trocar os elementos destas posições e mostrar
-o vetor após a troca e escrever o vetor atualizado no arquivo texto.*/
-
+/*21- Faça um programa contendo:
+- Uma função para ler um número inteiro não sendo aceito número menores que 1.
+- Uma função que receba três números inteiros A, B e C. A função deverá somar todos os inteiros
+entre B e C que sejam divisíveis por A (inclusive B e C) e retornar o resultado para ser exibido na
+tela.
+*/
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
@@ -16,100 +13,55 @@ o vetor após a troca e escrever o vetor atualizado no arquivo texto.*/
 
 using namespace std;
 
-// Função para gerar o vetor sem números repetidos
-void gerarVetor(int V[], int tamanho) {
-    int i = 0;
-    while (i < tamanho) {
-        int num = rand() % 101; // Gera números de 0 a 100
-        bool repetido = false;
-        
-        // Verifica se o número já existe no vetor
-        for (int j = 0; j < i; j++) {
-            if (V[j] == num) {
-                repetido = true;
-                break;
-            }
-        }
-        
-        // Se não for repetido, adiciona na posição atual e avança
-        if (!repetido) {
-            V[i] = num;
-            i++;
-        }
-    }
-}
-
-// Função para mostrar os valores na tela
-void mostrarVetor(int V[], int tamanho) {
-    for (int i = 0; i < tamanho; i++) {
-        cout << V[i];
-        if (i < tamanho - 1) {
-            cout << ", ";
-        }
-    }
-    cout << endl;
-}
-
-// Função para escrever os valores em um arquivo de texto
-void escreverArquivo(int V[], int tamanho, const char* nomeArquivo) {
-    ofstream arquivo(nomeArquivo);
-    
-    if (arquivo.is_open()) {
-        for (int i = 0; i < tamanho; i++) {
-            arquivo << V[i];
-            if (i < tamanho - 1) {
-                arquivo << " ";
-            }
-        }
-        arquivo.close();
-        cout << "[Arquivo '" << nomeArquivo << "' atualizado com sucesso!]" << endl;
-    } else {
-        cout << "Erro ao tentar abrir o arquivo para escrita." << endl;
-    }
-}
-
-// Função para ler e validar uma posição (0 a 19)
-int lerPosicao() {
-    int pos;
+// Ler número inteiro maior que 1
+int lerNumero(char texto[]) {
+    int numero;
     do {
-        cout << "Digite uma posicao (0 a 19): ";
-        cin >> pos;
-        if (pos < 0 || pos > 19) {
-            cout << "Posicao invalida! Tente novamente." << endl;
+        cout << texto;
+        cin >> numero;
+        
+        if (numero < 1) {
+            cout << "Valor invalido! O numero deve ser maior ou igual a 1.\n";
         }
-    } while (pos < 0 || pos > 19);
-    return pos;
+    } while (numero < 1);
+    
+    return numero;
+}
+
+// Soma inteiros divisiveis por a
+int somarDivisiveis(int a, int b, int c) {
+    int soma = 0;
+    int inicio, fim;
+    
+    if (b < c) {
+        inicio = b;
+        fim = c;
+    } else {
+        inicio = c;
+        fim = b;
+    }
+    
+    for (int i = inicio; i <= fim; i++) {
+        if (i % a == 0) {
+            soma += i;
+        }
+    }
+    
+    return soma;
 }
 
 main() {
-    int V[20];
-    const char* nomeDoArquivo = "exer_22.txt";
-
-    // 1. Gera e mostra o vetor original
-    gerarVetor(V, 20);
-    cout << "--- Vetor Original ---" << endl;
-    mostrarVetor(V, 20);
-
-    // 2. Escreve no arquivo texto
-    escreverArquivo(V, 20, nomeDoArquivo);
-
-    // 3. Lê duas posições válidas
-    cout << "\n--- Troca de Elementos ---" << endl;
-    cout << "Escolha a primeira posicao:" << endl;
-    int pos1 = lerPosicao();
+    int a, b, c, resultado;
     
-    cout << "Escolha a segunda posicao:" << endl;
-    int pos2 = lerPosicao();
-
-    // 4. Troca os elementos dessas posições
-    int temp = V[pos1];
-    V[pos1] = V[pos2];
-    V[pos2] = temp;
-
-    // 5. Mostra o vetor após a troca e atualiza o arquivo
-    cout << "\n--- Vetor Apos a Troca ---" << endl;
-    mostrarVetor(V, 20);
-    escreverArquivo(V, 20, nomeDoArquivo);
-
+    cout << "--- Soma de Divisiveis ---\n";
+    
+    a = lerNumero("Informe o valor de A (divisor): ");
+    b = lerNumero("Informe o valor de B (limite 1): ");
+    c = lerNumero("Informe o valor de C (limite 2): ");
+    
+    resultado = somarDivisiveis(a, b, c);
+    
+    cout << "A soma dos inteiros entre B e C divisiveis por A e: " << resultado << endl;
+         
     return 0;
 }
