@@ -1,0 +1,87 @@
+PONTEIROS
+- ponteiro é um endereço de memória
+- indica em que parte da memória do computador uma variável está alocada
+não o que está armazenado
+- modo de acesso à uma variável sem referir-se-a
+- ponteiros são utilizados em situações em que o uso do nome de uma
+variável não é permitido, impossível ou indesejável
+
+Por que usar ponteiros?
+Manipular elementos de array
+Argumentos de funções que modificam o valor original
+Alocação de memória dinâmica
+Manipular string de uma função para outra
+Manipular referências de endereços de memória entre funções
+
+Seu valor indica onde uma variável está armazenada, não o que está
+armazendando
+Para Manipular ponteiros utilizamos o operador indireto (*) asterisco
+int *p;
+char *p;
+int *p, *p1, *p2;
+
+declarando uma variável do tipo ponteiro
+string *s1; // ponteiro string
+int *p = &x; //declara o ponteiro e já define seu endereço, ou seja,
+p aponta para o endereço de x
+
+int x, *p = &x, i; variáveis e ponteiros já endereçados
+
+todo o ponteiro após ter sido definido deve indicar a qual endereço
+de memória ele se refere. Para isso utiliza-se o "&"
+
+int *px, x;
+x = 5;
+px = &x;
+Desta forma pode-se dizer que:
+px recebe o endereço de x
+px aponta para o endereço em memória de x
+
+O operador "*" é complementar ao operador "&", ele é um operador
+unário, que retorna ou manipula o valor da variável localizada
+no endereço apontado pelo ponteiro
+
+como todas as variáveis, os ponteiros tem um endereço e um valor
+o operador &, precedendo o nome do ponteio, resulta na posição de 
+memória onde o ponteiro está localizado
+
+Exibindo um ponteiro:
+cout << "px = " << px;
+//mostra o endereço de memória para onde o ponteiro aponta
+
+cout << "px = " << *px;
+//mostra o valor no endereço apontado
+
+cout << "px = " << &px;
+//mostra o endereço de memória do ponteiro;
+
+cout << "px = " << **&px;
+//mostra o valor do endereço apontado
+
+A primeira coisa a ter em mente é que um ponteiro não está apontando
+para nenhum lugar até que atibuímos a ele o endereço de uma outra variável
+ou alocamos um endereço em memória para ele
+Um programa entra em colapso absoluto se 
+tentarmos acessar um ponteiro que aponta para um 
+local de memória que já foi liberado novamente ao 
+sistema. 
+No caso menos grave, estaremos tentando acessar 
+locais de memória inválidos ou reservados a outros 
+programas ou tarefas do sistema operacional
+
+ponteiros com struct:
+o ponteiro deve ser definido do mesmo tipo
+o mesmo deve estar entre parênteses ou usar o apontador ->
+ex: (*pi).campo
+px->campo
+
+ponteio com array
+Assim, em C
+&vetor[0] é o mesmo que “vetor”
+Assim, como inicializo um ponteiro para um vetor ?
+Ex.:
+int vetor[] = {0,1,2,4,6};
+int *pVetor;
+pVetor = &vetor[0];  
+OU
+pVetor = vetor;
