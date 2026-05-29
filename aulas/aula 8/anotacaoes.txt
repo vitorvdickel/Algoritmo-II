@@ -1,0 +1,13 @@
+ARITMÉTICA DE PONTEIRO
+ordem de precedência dos operadores
+Ex:
+int x = 234;
+int *px;
+px = &x
+(*px)++;
+cout << px << endl;
+saida
+lixo de memória
+
+*o operador de incremento "++" tem maior prioridade que o operador
+"*" por isso a necessidade dos parenteses
