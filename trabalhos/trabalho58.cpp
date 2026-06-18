@@ -96,12 +96,12 @@ int main()
             {
                 cout << "\nGerando vetores...\n";
 
-                qtdd = lerQuantidade();
+                qtdd = lerQuantidade(); // Lê a quantidade de posições para os vetores
                 int *N = lerN(qtdd);
 
-                VG = new int[*qtdd];
-                VE = new int[*qtdd];
-                VN = new int[*qtdd];
+                VG = new int[*qtdd]; // Aloca dinamicamente o vetor VG com a quantidade de posições definida pelo usuário
+                VE = new int[*qtdd]; // Aloca dinamicamente o vetor VE com a quantidade de posições definida pelo usuário
+                VN = new int[*qtdd]; // Aloca dinamicamente o vetor VN com a quantidade de posições definida pelo usuário
 
                 cout << "\nVetores alocados com sucesso!\n";
 
@@ -110,11 +110,11 @@ int main()
 
             case 2:
             {
-                if (VG == NULL){
+                if (VG == NULL){ // Verifica se os vetores foram gerados antes de tentar localizar um valor
                     cout << "Vetores não foram gerados, favor executar opção 1 primeiro" << endl;
                     break;
                 }
-                localizarValor(VG, VE, VN, qtdd, locVE, locVN);
+                localizarValor(VG, VE, VN, qtdd, locVE, locVN); // Chama a função para localizar um valor e atualizar os vetores VE e VN
                 break;
             }
 
